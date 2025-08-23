@@ -20,11 +20,29 @@ class MyApp(MDApp):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Lightseagreen"
         
-        # Carrega APENAS o arquivo KV da tela de login.
-        # Isso nos ajudará a isolar o problema.
-        kv_dir = os.path.join(os.path.dirname(__file__), 'views')
-        Builder.load_file(os.path.join(kv_dir, 'loginScreen.kv'))
-        
+        def load_kv_files(self):
+            """Carrega todos os arquivos KV necessários"""
+            kv_dir = os.path.join(os.path.dirname(__file__), 'views')
+            kv_files = [
+                'loginScreen.kv',
+                'homeScreen.kv',
+                'inicioScreen.kv',
+                'enderecoScreen.kv',
+                'associadoScreen.kv',
+                'planoScreen.kv',
+                'veiculoScreen.kv',
+                'funcionarioScreen.kv',
+                'cargoScreen.kv',
+                'departamento.kv',
+                
+            ]
+            for kv_file in kv_files:
+                kv_path = os.path.join(kv_dir, kv_file)
+                if os.path.exists(kv_path):
+                    Builder.load_file(kv_path)
+                else:
+                    print(f"Aviso: Arquivo KV não encontrado: {kv_path}")
+                    
         # Cria o gerenciador de telas.
         self.root = MDScreenManager()
         

@@ -17,9 +17,6 @@ class LoginScreen(MDScreen):
     """
     def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
-        # Importa o arquivo KV para esta tela.
-        # Isso é importante para que as regras de layout sejam aplicadas.
-        Builder.load_file('views/loginScreen.kv')
 
     def on_login_button_press(self):
         """
@@ -39,7 +36,7 @@ class LoginScreen(MDScreen):
         
         # Dados a serem enviados no corpo da requisição POST.
         payload = {
-            'username': username,
+            'usuarioPess': username, # Corrigido para o campo esperado
             'password': password
         }
         
