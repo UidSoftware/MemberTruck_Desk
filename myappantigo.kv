@@ -1,0 +1,103 @@
+MDScreen:
+    md_bg_color: app.theme_cls.backgroundColor # Esta linha agora pertence ao MDScreen
+    #md_bg_color: app.theme_cls.primaryColor
+    
+    
+    Label:
+        text: 'Tela de Login'
+        font_size: '50sp'
+        pos_hint:{"center_x":0.5, "center_y":0.75}
+
+    # Seus MDTextFields e o botão de login devem estar indentados abaixo do MDScreen
+    MDTextField:
+        mode:"filled"
+        id: my_user_tf
+        pos_hint:{"center_x":0.5, "center_y":0.57}
+        size_hint_x:0.7
+
+        MDTextFieldHelperText:
+            text: "Seu Usuário Aqui"
+            text_color_focus: "#AFEEEE"
+            mode: "persistent"
+        MDTextFieldTrailingIcon:
+            icon: "information"
+            theme_icon_color: "Custom"
+            icon_color_focus: "black"
+            mode: "persistent"
+
+        MDTextFieldLeadingIcon:
+            icon: "account"
+            theme_icon_color: "Custom"
+            icon_color_focus: "black"
+
+        MDTextFieldHintText:
+            text:"Digite Seu Usuário."
+
+        MDTextFieldMaxLengthText:
+            max_text_length: 50
+
+    MDTextField:
+        mode:"filled"
+        id: my_pass_tf
+        pos_hint:{"center_x":0.5, "center_y":0.43}
+        size_hint_x:0.7
+
+        hint_text:"Digite Sua Senha."
+        password: True
+
+        MDTextFieldHelperText:
+            text: "Sua Senha Aqui"
+            ext_color_focus: "#AFEEEE"  
+            mode: "persistent"
+
+        MDTextFieldTrailingIcon:
+            icon: "eye"
+            theme_icon_color: "Custom"
+            icon_color_focus: "black"
+
+        MDTextFieldLeadingIcon:
+            icon: "key-variant"
+            theme_icon_color: "Custom"
+            icon_color_focus: "black"
+
+        MDTextFieldHintText:
+            text:"Digite Sua Senha."
+
+    MDButton:
+        style: "elevated"
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        size_hint_x: 0.7
+        on_release: app.do_login()
+        theme_text_color: "Custom" 
+        text_color: 1, 1, 1, 1 #
+        on_release: app.root.login_user(username_input.text, password_input.text) # Chama um método no ScreenManager ou no App
+
+        MDButtonText:
+            text: "Fazer Login"
+
+    MDButton:
+        style: "elevated"
+        pos_hint: {"center_x": 0.3, "center_y": 0.2}
+        size_hint_x: 0.7
+        theme_text_color: "Custom" 
+        text_color: 1, 1, 1, 1 #
+        on_release: app.login_user(username_input.text, password_input.text) # Chama um método no ScreenManager ou no App
+
+        MDButtonText:
+            text: "Fazer Login Tela"
+
+    MDButton:
+        style: "elevated"
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        size_hint_x: 0.7
+        theme_text_color: "Custom" 
+        text_color: 1, 1, 1, 1 #
+        on_release: app.current = 'funcionario' # Muda para a tela 'funcionario'
+        
+        MDButtonText:
+            text: 'Ir para Funcionário'
+        
+
+    
+        
+       

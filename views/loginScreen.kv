@@ -1,0 +1,59 @@
+# Arquivo: views/loginScreen.kv
+
+<LoginScreen>:
+    name: 'login'
+    
+    
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(15)
+        padding: dp(25)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.8, None
+        height: self.minimum_height
+
+        MDLabel:
+            text: "Login"
+            font_style_name: "Headline.large" 
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            color: 1, 1, 1, 1
+
+        MDTextField:
+            id: user_field
+            hint_text: "Nome de Usuário"
+            mode: "filled"
+            icon_left: "account"
+            size_hint_x: 0.9
+            pos_hint: {'center_x': 0.5}
+            
+        MDTextField:
+            id: password_field
+            hint_text: "Senha"
+            password: True  # Oculta o texto da senha
+            mode: "filled"
+            icon_left: "lock"
+            size_hint_x: 0.9
+            pos_hint: {'center_x': 0.5}
+
+        # A classe do botão foi corrigida para MDButton
+        MDButton:
+            # Novo estilo na versão 2.0. "elevated" agora é "filled".
+            style: "filled"
+            pos_hint: {'center_x': 0.5}
+            size_hint_x: 0.8
+            on_release: root.on_login_button_press()
+            # O texto agora é um widget filho
+            MDButtonText:
+                text: "Entrar"
+            
+           
+            
+        MDLabel:
+            id: error_label
+            text: ""
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            color: 1, 0, 0, 1 # Cor vermelha para a mensagem de erro

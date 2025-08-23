@@ -1,0 +1,71 @@
+#:kivy 2.0.0
+#:import MDScreen kivymd.uix.screen.MDScreen
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import MDButton kivymd.uix.button.MDButton
+#:import dp kivy.metrics.dp
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<DepartamentoScreen>:
+    name: 'cadastro_departamento'
+    md_bg_color: get_color_from_hex("#FFFFFF")
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(15)
+        padding: dp(15)
+
+        MDLabel:
+            text: "Cadastro de Departamento"
+            font_style: "Headline"
+            role: "small"
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+        
+        # ID para ler/atualizar um Departamento específico
+        MDTextField:
+            id: id_departamento_field
+            label: "ID do Departamento"
+            style: "outlined"
+            size_hint_x: 0.5
+            pos_hint: {'center_x': 0.5}
+
+        MDTextField:
+            id: nome_departamento_field
+            label: "Nome do Departamento"
+            style: "outlined"
+        
+        MDTextField:
+            id: descricao_departamento_field
+            label: "Descrição do Departamento"
+            style: "outlined"
+            size_hint_y: None
+            height: dp(100) # Campo maior para a descrição
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(48)
+            spacing: dp(10)
+            MDButton:
+                style: "elevated"
+                text: "Criar"
+                on_release: root.controller.criar()
+            MDButton:
+                style: "elevated"
+                text: "Ler"
+                on_release: root.controller.ler(root.ids.id_departamento_field.text)
+            MDButton:
+                style: "elevated"
+                text: "Atualizar"
+                on_release: root.controller.atualizar(root.ids.id_departamento_field.text)
+            MDButton:
+                style: "elevated"
+                text: "Deletar"
+                on_release: root.controller.deletar(root.ids.id_departamento_field.text)
+            MDButton:
+                style: "elevated"
+                text: "Limpar"
+                on_release: root.controller.clear_form()

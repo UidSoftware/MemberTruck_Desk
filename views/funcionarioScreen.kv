@@ -1,0 +1,121 @@
+#:kivy 2.0.0
+#:import MDScreen kivymd.uix.screen.MDScreen
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import MDButton kivymd.uix.button.MDButton
+#:import MDButtonText kivymd.uix.button.MDButtonText
+#:import dp kivy.metrics.dp
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<FuncionarioScreen>:
+    name: 'cadastro_funcionario'
+    md_bg_color: app.theme_cls.backgroundColor
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(15)
+        padding: dp(15)
+
+        MDLabel:
+            text: "Cadastro de Funcionário"
+            font_style: "Headline"
+            role: "small"
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        # ID para ler/atualizar um Funcionario específico
+        MDTextField:
+            id: id_funcionario_field
+            label: "ID do Funcionário"
+            style: "outlined"
+            size_hint_x: 0.5
+            pos_hint: {'center_x': 0.5}
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: nome_funcionario_field
+                label: "Nome"
+                style: "outlined"
+            MDTextField:
+                id: telefone_funcionario_field
+                label: "Telefone"
+                style: "outlined"
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: matricula_funcionario_field
+                label: "Matrícula"
+                style: "outlined"
+            MDTextField:
+                id: email_funcionario_field
+                label: "Email"
+                style: "outlined"
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: usuario_funcionario_field
+                label: "Usuário"
+                style: "outlined"
+            MDTextField:
+                id: senha_funcionario_field
+                label: "Senha"
+                style: "outlined"
+                password: True
+        
+        # CAMPO E BOTÃO DE ENDEREÇO (Refatorado)
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: endereco_funcionario_field
+                label: "Endereço (ID)"
+                style: "outlined"
+                readonly: True
+                size_hint_x: 0.8
+            MDButton:
+                icon: "magnify"
+                size_hint_x: 0.2
+                on_release: root.show_endereco_screen()
+
+        # Botoes
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(48)
+            spacing: dp(10)
+            MDButton:
+                style: "elevated"
+                text: "Criar"
+                on_release: root.controller.criar()
+            MDButton:
+                style: "elevated"
+                text: "Ler"
+                on_release: root.controller.ler(root.ids.id_funcionario_field.text)
+            MDButton:
+                style: "elevated"
+                text: "Atualizar"
+                on_release: root.controller.atualizar(root.ids.id_funcionario_field.text)
+            MDButton:
+                style: "elevated"
+                text: "Deletar"
+                on_release: root.controller.deletar(root.ids.id_funcionario_field.text)
+            MDButton:
+                style: "elevated"
+                text: "Limpar"
+                on_release: root.controller.clear_form()

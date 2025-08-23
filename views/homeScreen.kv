@@ -1,0 +1,204 @@
+# Arquivo: views/home_screen.kv
+
+#:kivy 2.0.0
+# Importações necessárias
+#:import MDScreen kivymd.uix.screen.MDScreen
+#:import MDTopAppBar kivymd.uix.appbar.MDTopAppBar
+#:import MDNavigationDrawer kivymd.uix.navigationdrawer.MDNavigationDrawer
+#:import MDNavigationDrawerItem kivymd.uix.navigationdrawer.MDNavigationDrawerItem
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import dp kivy.metrics.dp
+#:import MDButton kivymd.uix.button.MDButton
+#:import MDButtonText kivymd.uix.button.MDButtonText
+#:import Widget kivy.uix.widget.Widget
+#:import MDNavigationLayout kivymd.uix.navigationdrawer.MDNavigationLayout
+#:import ScreenManager kivy.uix.screenmanager.ScreenManager
+#:import Screen kivymd.uix.screen.MDScreen
+#:import MDTopAppBarLeadingButtonContainer kivymd.uix.appbar.MDTopAppBarLeadingButtonContainer
+#:import MDActionTopAppBarButton kivymd.uix.appbar.MDActionTopAppBarButton
+#:import MDTopAppBarTitle kivymd.uix.appbar.MDTopAppBarTitle
+#:import MDNavigationDrawerItemText kivymd.uix.navigationdrawer.MDNavigationDrawerItemText
+#:import MDNavigationDrawerItemLeadingIcon kivymd.uix.navigationdrawer.MDNavigationDrawerItemLeadingIcon
+#:import MDNavigationDrawerDivider kivymd.uix.navigationdrawer.MDNavigationDrawerDivider
+#:import Image kivy.uix.image.Image
+
+
+<HomeScreen>:
+    name: 'home'
+    md_bg_color: app.theme_cls.backgroundColor
+
+    MDNavigationLayout:
+        ScreenManager:
+            id: main_app_screen_manager
+            Screen:
+                name: 'app_container_screen'
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, 1
+
+                    MDTopAppBar:
+                        type: "small"
+                        elevation: 4
+                        md_bg_color: app.theme_cls.primaryColor
+                        size_hint_y: None
+                        height: dp(56)
+
+                        MDTopAppBarLeadingButtonContainer:
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                spacing: dp(8)
+                                adaptive_width: True
+                                pos_hint: {'center_y': 0.5}
+
+                                MDActionTopAppBarButton:
+                                    icon: "menu"
+                                    # Propriedade on_release antes dos widgets filhos
+                                    on_release: root.ids.nav_drawer.set_state("open")
+
+                                Image:
+                                    id: user_avatar
+                                    source: "image/luiz.jpg"
+                                    size_hint: None, None
+                                    size: dp(32), dp(32)
+                                    keep_ratio: True
+                                    allow_stretch: False
+
+                                MDLabel:
+                                    id: user_name_label
+                                    text: "Usuário"
+                                    font_style_name: "Title.small"
+                                    adaptive_width: True
+                                    pos_hint: {'center_y': 0.5}
+
+                        MDTopAppBarTitle:
+                            text: "Sistema de Gestão"
+                            halign: "left"
+
+                    ScreenManager:
+                        id: content_manager
+                        size_hint_y: 1
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            type: "standard"
+            width: dp(250)
+            md_bg_color: app.theme_cls.surfaceColor
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: dp(10)
+                spacing: dp(5)
+                size_hint_y: 1
+
+                MDLabel:
+                    text: "Menu Principal"
+                    font_style_name: "Title.medium"
+                    halign: "left"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    padding: dp(10), dp(20), dp(10), dp(10)
+
+                MDNavigationDrawerItem:
+                    # Propriedade on_release antes dos widgets filhos
+                    on_release:
+                        root.switch_content_screen('inicio')
+                        root.ids.nav_drawer.set_state("close")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "home"
+                    MDNavigationDrawerItemText:
+                        text: "Início"
+
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerItem:
+                    # Propriedade on_release antes dos widgets filhos
+                    on_release: root.toggle_cadastro_menu()
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "account-plus"
+                    MDNavigationDrawerItemText:
+                        text: "Cadastro"
+
+                MDBoxLayout:
+                    id: cadastro_submenu
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: 0
+                    opacity: 0
+                    padding: dp(0), dp(0), dp(0), dp(0)
+                    spacing: dp(5)
+
+                    MDNavigationDrawerItem:
+                        # Propriedade on_release antes dos widgets filhos
+                        on_release:
+                            root.switch_content_screen('cadastro_funcionario')
+                            root.ids.nav_drawer.set_state("close")
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "account-tie"
+                        MDNavigationDrawerItemText:
+                            text: "Funcionários"
+                    MDNavigationDrawerItem:
+                        # Propriedade on_release antes dos widgets filhos
+                        on_release:
+                            root.switch_content_screen('cadastro_associado')
+                            root.ids.nav_drawer.set_state("close")
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "account-group"
+                        MDNavigationDrawerItemText:
+                            text: "Associados"
+                    MDNavigationDrawerItem:
+                        # Propriedade on_release antes dos widgets filhos
+                        on_release:
+                            # root.switch_content_screen('departamento')
+                            root.ids.nav_drawer.set_state("close")
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "office-building"
+                        MDNavigationDrawerItemText:
+                            text: "Departamentos"
+                    MDNavigationDrawerItem:
+                        # Propriedade on_release antes dos widgets filhos
+                        on_release:
+                            # root.switch_content_screen('cargo')
+                            root.ids.nav_drawer.set_state("close")
+                        MDNavigationDrawerItemLeadingIcon:
+                            icon: "briefcase"
+                        MDNavigationDrawerItemText:
+                            text: "Cargos"
+
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerItem:
+                    # Propriedade on_release antes dos widgets filhos
+                    on_release:
+                        print("Relatórios Clicado")
+                        root.ids.nav_drawer.set_state("close")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "chart-bar"
+                    MDNavigationDrawerItemText:
+                        text: "Relatórios"
+
+                MDNavigationDrawerDivider:
+
+                MDNavigationDrawerItem:
+                    # Propriedade on_release antes dos widgets filhos
+                    on_release:
+                        print("Configurações Clicado")
+                        root.ids.nav_drawer.set_state("close")
+                    MDNavigationDrawerItemLeadingIcon:
+                        icon: "cog"
+                    MDNavigationDrawerItemText:
+                        text: "Configurações"
+
+                Widget:
+                    size_hint_y: 1
+
+                MDButton:
+                    style: "filled"
+                    pos_hint: {"center_x": 0.5}
+                    size_hint_x: 0.9
+                    md_bg_color: app.theme_cls.primaryColor
+                    # Propriedade on_release antes dos widgets filhos
+                    on_release: app.logout()
+                    MDButtonText:
+                        text: "Sair"
+                        color: app.theme_cls.onPrimaryColor

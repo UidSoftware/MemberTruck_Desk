@@ -1,0 +1,234 @@
+# Arquivo: views/enderecoScreen.kv
+# Este arquivo KV está configurado para KivyMD 2.0+
+
+#:kivy 2.0.0
+# Importações necessárias para os componentes KivyMD 2.0+ utilizados nesta tela
+#:import MDScreen kivymd.uix.screen.MDScreen
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import MDButton kivymd.uix.button.MDButton
+#:import MDButtonText kivymd.uix.button.MDButtonText
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import dp kivy.metrics.dp
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDCheckbox kivymd.uix.selectioncontrol.MDCheckbox
+#:import MDScrollView kivymd.uix.scrollview.MDScrollView
+#:import MDDropdownMenu kivymd.uix.menu.MDDropdownMenu
+#:import MDListItem kivymd.uix.list.MDListItem 
+#:import MDListItemHeadlineText kivymd.uix.list.MDListItemHeadlineText 
+#:import MDTextFieldHelperText kivymd.uix.textfield.MDTextFieldHelperText
+#:import MDTextFieldTrailingIcon kivymd.uix.textfield.MDTextFieldTrailingIcon
+#:import MDTextFieldLeadingIcon kivymd.uix.textfield.MDTextFieldLeadingIcon
+#:import MDTextFieldHintText kivymd.uix.textfield.MDTextFieldHintText
+#:import MDTextFieldMaxLengthText kivymd.uix.textfield.MDTextFieldMaxLengthText
+
+
+# NOVO: Define um item de menu personalizado para o Dropdown
+# Ele herda de MDListItem e usa MDListItemHeadlineText para exibir o texto
+<DropdownMenuItem@MDListItem>:
+    MDListItemHeadlineText:
+        text: root.text # O texto do item será passado para esta propriedade
+
+
+# Definição da tela PlanoScreen
+<EnderecoScreen>:
+    name: 'endereco' # Nome da tela para o ScreenManager
+    md_bg_color: app.theme_cls.backgroundColor # Cor de fundo da tela
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(20) # Preenchimento interno
+        spacing: dp(15) # Espaçamento entre os widgets filhos
+
+        ScrollView: # Permite rolagem se o conteúdo exceder o tamanho da tela
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None # Permite que a altura seja definida pelo conteúdo
+                height: self.minimum_height # Ajusta a altura da BoxLayout para o mínimo necessário
+                padding: dp(20) # Preenchimento interno
+                spacing: dp(15) # Espaçamento entre os widgets filhos
+
+                MDLabel:
+                    text: 'Cadastro de Endereço'
+                    halign: 'center' # Alinhamento horizontal do texto
+                    font_style: "Display" # CORRIGIDO: Usando estilo de fonte KivyMD 2.0+
+                    size_hint_y: None
+                    height: self.texture_size[1] # Ajusta a altura do label ao tamanho do texto
+
+                # --- CAMPOS DE PESSOA (para Associado) ---
+                MDTextField:
+                    id: endereco_cepEnde
+                    mode: "filled"
+                    pos_hint:{"center_x":0.5} # Centraliza horizontalmente
+                    size_hint_x:0.7 # Largura relativa
+
+                    MDTextFieldHintText:
+                        text:"CEP"
+                    MDTextFieldHelperText:
+                        text: "Digite o CEP" # Texto de ajuda atualizado
+                        text_color: "#AFEEEE"
+                        mode: "persistent"
+                    MDTextFieldLeadingIcon:
+                        icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                    MDTextFieldTrailingIcon:
+                        icon: "information"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                        mode: "persistent"
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 50
+                
+                MDTextField:
+                    id: endereco_nomeEnde
+                    mode: "filled"
+                    pos_hint:{"center_x":0.5} # Centraliza horizontalmente
+                    size_hint_x:0.7 # Largura relativa
+
+                    MDTextFieldHintText:
+                        text:"CEP"
+                    MDTextFieldHelperText:
+                        text: "Digite o Nome" # Texto de ajuda atualizado
+                        text_color: "#AFEEEE"
+                        mode: "persistent"
+                    MDTextFieldLeadingIcon:
+                        icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                    MDTextFieldTrailingIcon:
+                        icon: "information"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                        mode: "persistent"
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 50
+
+                MDTextField:
+                    id: endereco_numeroEnde
+                    mode: "filled"
+                    pos_hint:{"center_x":0.5} # Centraliza horizontalmente
+                    size_hint_x:0.7 # Largura relativa
+
+                    MDTextFieldHintText:
+                        text:"Número"
+                    MDTextFieldHelperText:
+                        text: "Digite o Número" # Texto de ajuda atualizado
+                        text_color: "#AFEEEE"
+                        mode: "persistent"
+                    MDTextFieldLeadingIcon:
+                        icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                    MDTextFieldTrailingIcon:
+                        icon: "information"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                        mode: "persistent"
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 50
+                
+                MDTextField:
+                    id: endereco_complementoEnde
+                    mode: "filled"
+                    pos_hint:{"center_x":0.5} # Centraliza horizontalmente
+                    size_hint_x:0.7 # Largura relativa
+
+                    MDTextFieldHintText:
+                        text:"Complemento"
+                    MDTextFieldHelperText:
+                        text: "Digite o Complemento" # Texto de ajuda atualizado
+                        text_color: "#AFEEEE"
+                        mode: "persistent"
+                    MDTextFieldLeadingIcon:
+                        icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                    MDTextFieldTrailingIcon:
+                        icon: "information"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                        mode: "persistent"
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 50
+
+                MDTextField:
+                    id: endereco_bairroEnde
+                    mode: "filled"
+                    pos_hint:{"center_x":0.5} # Centraliza horizontalmente
+                    size_hint_x:0.7 # Largura relativa
+
+                    MDTextFieldHintText:
+                        text:"Bairro"
+                    MDTextFieldHelperText:
+                        text: "Digite o Bairro" # Texto de ajuda atualizado
+                        text_color: "#AFEEEE"
+                        mode: "persistent"
+                    MDTextFieldLeadingIcon:
+                        icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                    MDTextFieldTrailingIcon:
+                        icon: "information"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                        mode: "persistent"
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 50
+
+                MDTextField:
+                    id: endereco_cidadeEnde
+                    mode: "filled"
+                    pos_hint:{"center_x":0.5} # Centraliza horizontalmente
+                    size_hint_x:0.7 # Largura relativa
+
+                    MDTextFieldHintText:
+                        text:"Cidade"
+                    MDTextFieldHelperText:
+                        text: "Digite a Cidade" # Texto de ajuda atualizado
+                        text_color: "#AFEEEE"
+                        mode: "persistent"
+                    MDTextFieldLeadingIcon:
+                        icon: "account"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                    MDTextFieldTrailingIcon:
+                        icon: "information"
+                        theme_icon_color: "Custom"
+                        icon_color_focus: "black"
+                        mode: "persistent"
+                    MDTextFieldMaxLengthText:
+                        max_text_length: 50
+                
+
+                # --- BOTÕES DE AÇÃO (Salvar, Editar, Excluir) ---
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_x: 0.7 # Largura relativa
+                    pos_hint: {"center_x": 0.5} # Centraliza horizontalmente
+                    spacing: dp(10) # Espaçamento entre os botões
+                    size_hint_y: None
+                    height: dp(48) # Altura para os botões
+
+                    MDButton:
+                        style: "elevated"
+                        size_hint_x: 1/3 # Divide o espaço igualmente entre 3 botões
+                        # Conecta diretamente ao método do controller
+                        on_release: root.controller.save_plano()
+                        MDButtonText:
+                            text: "Salvar"
+
+                    MDButton:
+                        style: "elevated"
+                        size_hint_x: 1/3
+                        # Conecta diretamente ao método do controller
+                        on_release: root.controller.editar_plano()
+                        MDButtonText:
+                            text: "Editar"
+
+                    MDButton:
+                        style: "elevated"
+                        size_hint_x: 1/3
+                        # Conecta diretamente ao método do controller
+                        on_release: root.controller.excluir_plano()
+                        MDButtonText:
+                            text: "Excluir"

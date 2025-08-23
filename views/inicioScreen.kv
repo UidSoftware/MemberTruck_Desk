@@ -1,0 +1,31 @@
+# views/inicioScreen.kv
+#:kivy 2.0.0
+#:import MDScreen kivymd.uix.screen.MDScreen
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+
+<InicioScreen>:
+    name: 'inicio'
+    md_bg_color: app.theme_cls.backgroundColor
+    
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(15)
+        size_hint: 1, 1
+
+        MDLabel:
+            text: 'Bem-vindo ao Sistema de Gestão!'
+            halign: 'center'
+            font_style_name: 'Headline.large'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding: dp(10)
+
+        MDLabel:
+            text: 'Use o menu lateral para navegar.'
+            halign: 'center'
+            font_style_name: 'Body.large'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding: dp(10)

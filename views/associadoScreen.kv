@@ -1,0 +1,209 @@
+# Arquivo: views/AssociadoScreen.kv
+
+#:kivy 2.0.0
+#:import MDScreen kivymd.uix.screen.MDScreen
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDTextField kivymd.uix.textfield.MDTextField
+#:import MDTextFieldHintText kivymd.uix.textfield.textfield.MDTextFieldHintText
+#:import MDTextFieldLeadingIcon kivymd.uix.textfield.textfield.MDTextFieldLeadingIcon
+#:import MDButton kivymd.uix.button.MDButton
+#:import MDButtonText kivymd.uix.button.MDButtonText
+#:import dp kivy.metrics.dp
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<AssociadoScreen>:
+    name: 'cadastro_associado'
+    md_bg_color: app.theme_cls.backgroundColor
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: dp(15)
+        padding: dp(15)
+
+        MDLabel:
+            text: "Cadastro de Associado"
+            font_style: "Headline"
+            role: "small"
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+        
+        # ID para ler um Associado específico
+        MDTextField:
+            id: id_associado_field
+            mode: "outlined"
+            size_hint_x: 0.5
+            pos_hint: {'center_x': 0.5}
+            MDTextFieldHintText:
+                text: "ID do Associado"
+        
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: nome_associado_field
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Nome"
+            MDTextField:
+                id: telefone_associado_field
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Telefone"
+        
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: documento_associado_field
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Documento"
+            MDTextField:
+                id: nascimento_associado_field
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Data de Nascimento"
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: email_associado_field
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Email"
+            MDTextField:
+                id: usuario_associado_field
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Usuário"
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: senha_associado_field
+                mode: "outlined"
+                password: True
+                MDTextFieldHintText:
+                    text: "Senha"
+            MDTextField:
+                id: plano_field
+                mode: "outlined"
+                readonly: True
+                size_hint_x: 0.8
+                MDTextFieldHintText:
+                    text: "Plano"
+            MDButton:
+                style: "icon"
+                size_hint_x: 0.2
+                icon: "magnify"
+                on_release: root.controller.open_plano_menu()
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(48)
+            MDTextField:
+                id: veiculo_associado_field
+                mode: "outlined"
+                readonly: True
+                size_hint_x: 0.8
+                MDTextFieldHintText:
+                    text: "Veículo"
+            MDButton:
+                style: "icon"
+                size_hint_x: 0.2
+                icon: "magnify"
+                on_release: root.controller.open_veiculo_menu()
+
+        # CAMPOS DE ENDEREÇO
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(10)
+            spacing: dp(5)
+            MDLabel:
+                text: "Dados de Endereço"
+                font_style: "Headline"
+                role: "small"
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1]
+            
+            MDTextField:
+                id: endereco_cepEnde
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "CEP"
+            MDTextField:
+                id: endereco_nomeEnde
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Rua"
+            MDBoxLayout:
+                orientation: 'horizontal'
+                spacing: dp(10)
+                MDTextField:
+                    id: endereco_numeroEnde
+                    mode: "outlined"
+                    size_hint_x: 0.4
+                    MDTextFieldHintText:
+                        text: "Número"
+                MDTextField:
+                    id: endereco_complementoEnde
+                    mode: "outlined"
+                    MDTextFieldHintText:
+                        text: "Complemento"
+            MDTextField:
+                id: endereco_bairroEnde
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Bairro"
+            MDTextField:
+                id: endereco_cidadeEnde
+                mode: "outlined"
+                MDTextFieldHintText:
+                    text: "Cidade"
+
+        # Botoes
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(48)
+            spacing: dp(10)
+            MDButton:
+                style: "elevated"
+                on_release: root.controller.criar()
+                MDButtonText:
+                    text: "Criar"
+            MDButton:
+                style: "elevated"
+                on_release: root.controller.ler(root.ids.id_associado_field.text)
+                MDButtonText:
+                    text: "Ler"
+            MDButton:
+                style: "elevated"
+                on_release: root.controller.atualizar(root.ids.id_associado_field.text)
+                MDButtonText:
+                    text: "Atualizar"
+            MDButton:
+                style: "elevated"
+                on_release: root.controller.deletar(root.ids.id_associado_field.text)
+                MDButtonText:
+                    text: "Deletar"
+            MDButton:
+                style: "elevated"
+                on_release: root.controller.clear_form()
+                MDButtonText:
+                    text: "Limpar"
