@@ -13,7 +13,7 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
 <AssociadoScreen>:
-    name: 'cadastro_associado'
+    name: 'associado'
     md_bg_color: app.theme_cls.backgroundColor
 
     MDBoxLayout:
@@ -104,8 +104,8 @@
                 size_hint_x: 0.8
                 MDTextFieldHintText:
                     text: "Plano"
-            MDButton:
-                style: "icon"
+            MDIconButton:
+                style: "outlined"
                 size_hint_x: 0.2
                 icon: "magnify"
                 on_release: root.controller.open_plano_menu()
@@ -122,12 +122,13 @@
                 size_hint_x: 0.8
                 MDTextFieldHintText:
                     text: "Veículo"
-            MDButton:
-                style: "icon"
+            MDIconButton:
+                style: "outlined"
                 size_hint_x: 0.2
                 icon: "magnify"
                 on_release: root.controller.open_veiculo_menu()
 
+            
         # CAMPOS DE ENDEREÇO
         MDBoxLayout:
             orientation: 'vertical'

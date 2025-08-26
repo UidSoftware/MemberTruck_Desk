@@ -16,7 +16,7 @@ class PlanoControl(CRUDController):
     Controller para a tela de Planos.
     Lida com a lógica de negócio para interagir com o backend Django.
     """
-    URL_BASE_API = "http://127.0.0.1:8000/api/planos/"
+    URL_BASE_API = "http://127.0.0.1:8888/api/Plano/"
 
     def __init__(self, view):
         self.view = view

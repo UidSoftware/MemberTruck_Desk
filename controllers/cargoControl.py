@@ -17,7 +17,7 @@ class CargoControl(CRUDController):
     """
     
     # URL base da sua API Django.
-    URL_BASE_API = "http://31.97.240.156:8000/api/"
+    URL_BASE_API = "http://31.97.240.156:8888/api/Cargo/"
     
     def __init__(self, view):
         """

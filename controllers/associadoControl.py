@@ -25,7 +25,7 @@ class AssociadoControl(CRUDController):
     """
     
     # URL base da sua API Django.
-    URL_BASE_API = "http://31.97.240.156:8000/api/"
+    URL_BASE_API = "http://31.97.240.156:8888/api/"
     
     def __init__(self, view):
         """
@@ -41,8 +41,25 @@ class AssociadoControl(CRUDController):
         self.veiculos_data = []
         self.session = FuturesSession() # Cria uma sessão de requisições assíncronas
         
-        # Agenda a busca dos dados e a configuração dos dropdowns
-        # para que ocorram somente após a view estar totalmente carregada.
+        
+
+    # Lógica de login
+    def on_login_success(self, token):
+        """
+        Este método é chamado após o login ser bem-sucedido.
+        Ele configura a sessão com o token de autenticação.
+        """
+        # 1. Cria a sessão HTTP
+        self.session = requests.Session()
+        
+        # 2. Adiciona o token de autenticação no cabeçalho
+        # O formato do cabeçalho pode variar (Bearer, Token, etc.).
+        # Verifique a documentação da sua API.
+        headers = {'Authorization': f'Bearer {token}'}
+        self.session.headers.update(headers)
+
+        # 3. Agora que a sessão está configurada,
+        # você pode agendar a busca dos dados
         Clock.schedule_once(self.fetch_and_setup_dropdowns)
 
     def fetch_and_setup_dropdowns(self, dt):
@@ -53,8 +70,8 @@ class AssociadoControl(CRUDController):
         """
         print("Buscando dados para dropdowns...")
         futures = {
-            self.session.get(f"{self.URL_BASE_API}planos/"): "planos",
-            self.session.get(f"{self.URL_BASE_API}veiculos/"): "veiculos"
+            self.session.get(f"{self.URL_BASE_API}Plano/"): "Plano",
+            self.session.get(f"{self.URL_BASE_API}Veiculo/"): "Veiculo"
         }
         
         for future in as_completed(futures):
@@ -63,10 +80,10 @@ class AssociadoControl(CRUDController):
                 response = future.result()
                 if response.status_code == 200:
                     data = response.json()
-                    if key == "planos":
+                    if key == "Plano":
                         self.planos_data = data
                         self.setup_plano_menu()
-                    elif key == "veiculos":
+                    elif key == "Veiculo":
                         self.veiculos_data = data
                         self.setup_veiculo_menu()
                 else:

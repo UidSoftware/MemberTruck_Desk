@@ -40,9 +40,9 @@ class HomeScreen(MDScreen):
         # Corrigido para usar a sua classe real: InicioScreen
         self.content_screens['inicio'] = InicioScreen(name='inicio')
         
-        # Adicione aqui as outras telas de cadastro
-        self.content_screens['cadastro_funcionario'] = FuncionarioScreen(name='cadastro_funcionario')
-        self.content_screens['cadastro_associado'] = AssociadoScreen(name='cadastro_associado')
+        # Adicione aqui as outras telas de cadastro -----------------------------------------------------
+        self.content_screens['funcionario'] = FuncionarioScreen(name='funcionario')
+        self.content_screens['associado'] = AssociadoScreen(name='associado')
         
         # Adiciona a tela de início ao gerenciador de conteúdo
         self.add_widget_to_content_manager(self.content_screens['inicio'])

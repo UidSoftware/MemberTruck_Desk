@@ -16,7 +16,7 @@ class EnderecoControl(CRUDController):
     Controller para a tela de Endereços.
     Lida com a lógica de negócio para interagir com o backend Django.
     """
-    URL_BASE_API = "http://31.97.240.156:8000/api/enderecos/"
+    URL_BASE_API = "http://31.97.240.156:8888/api/Endereco/"
 
     def __init__(self, view):
         self.view = view

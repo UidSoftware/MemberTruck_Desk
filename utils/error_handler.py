@@ -22,17 +22,17 @@ class ErrorHandler:
             error_label.text = message
         return message
     
-        @staticmethod
-        def handle_connection_error(exception, error_label=None):
-            """Trata erros de conexão"""
-            if isinstance(exception, requests.exceptions.ConnectionError):
-                message = "Não foi possível conectar ao servidor. Verifique sua conexão."
-            elif isinstance(exception, requests.exceptions.Timeout):
-                message = "Tempo limite de conexão excedido. Tente novamente."
-            elif isinstance(exception, requests.exceptions.SSLError):
-                message = "Erro de certificado SSL. Verifique a configuração do servidor."
-            else:
-                message = f"Erro de conexão: {str(exception)}"
-            if error_label:
-                error_label.text = message
-            return message
+    @staticmethod
+    def handle_connection_error(exception, error_label=None):
+        """Trata erros de conexão"""
+        if isinstance(exception, requests.exceptions.ConnectionError):
+            message = "Não foi possível conectar ao servidor. Verifique sua conexão."
+        elif isinstance(exception, requests.exceptions.Timeout):
+            message = "Tempo limite de conexão excedido. Tente novamente."
+        elif isinstance(exception, requests.exceptions.SSLError):
+            message = "Erro de certificado SSL. Verifique a configuração do servidor."
+        else:
+            message = f"Erro de conexão: {str(exception)}"
+        if error_label:
+            error_label.text = message
+        return message

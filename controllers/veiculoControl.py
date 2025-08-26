@@ -16,7 +16,7 @@ class VeiculoControl(CRUDController):
     Controller para a tela de Veículos.
     Lida com a lógica de negócio para interagir com o backend Django.
     """
-    URL_BASE_API = "http://127.0.0.1:8000/api/veiculos/"
+    URL_BASE_API = "http://127.0.0.1:8888/api/Veiculo/"
 
     def __init__(self, view):
         self.view = view

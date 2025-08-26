@@ -52,7 +52,10 @@ class LoginScreen(MDScreen):
                 # Login bem-sucedido.
                 # Você pode lidar com o token de autenticação aqui, se houver.
                 print("Login bem-sucedido!")
+
+                self.is_logged_in = True
                 
+
                 # Testando quantas telas tem
                 print("Telas disponíveis:", self.manager.screen_names)
                 
