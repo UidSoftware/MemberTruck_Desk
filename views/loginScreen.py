@@ -9,6 +9,9 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.textfield import MDTextField
 
+Builder.load_file('views/loginScreen.kv')
+
+
 class LoginScreen(MDScreen):
     """
     Tela de login da aplicação.
@@ -32,7 +35,7 @@ class LoginScreen(MDScreen):
         
         # URL do endpoint de login no seu backend Django.
         # IMPORTANTE: Altere esta URL para a URL correta do seu projeto.
-        login_url = "http://31.97.240.156:8000/api/login/"
+        login_url = "http://31.97.240.156:8888/api/login/"
         
         # Dados a serem enviados no corpo da requisição POST.
         payload = {
@@ -50,9 +53,14 @@ class LoginScreen(MDScreen):
                 # Você pode lidar com o token de autenticação aqui, se houver.
                 print("Login bem-sucedido!")
                 
+                # Testando quantas telas tem
+                print("Telas disponíveis:", self.manager.screen_names)
+                
                 # Navega para a tela 'home'.
                 # A propriedade `manager` é o ScreenManager que gerencia a tela.
                 self.manager.current = 'home'
+                
+                
             else:
                 # Login falhou.
                 error_data = response.json()

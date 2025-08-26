@@ -16,6 +16,8 @@ from views.inicioScreen import InicioScreen
 from views.funcionarioScreen import FuncionarioScreen
 from views.associadoScreen import AssociadoScreen
 
+Builder.load_file('views/homeScreen.kv')
+
 class HomeScreen(MDScreen):
     """
     Tela principal da aplicação que contém o menu de navegação.

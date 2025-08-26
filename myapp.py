@@ -46,8 +46,9 @@ class MyApp(MDApp):
         # Cria o gerenciador de telas.
         self.root = MDScreenManager()
         
-        # Adiciona APENAS a tela de login ao gerenciador.
+        # Adiciona APENAS a tela de login ao gerenciador.-----------------------------------------------------------------
         self.root.add_widget(LoginScreen(name='login'))
+        
         
         # Define a tela inicial da aplicação como a de login.
         self.root.current = 'login'
