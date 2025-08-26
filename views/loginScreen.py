@@ -55,9 +55,6 @@ class LoginScreen(MDScreen):
 
                 self.is_logged_in = True
                 
-
-                # Testando quantas telas tem
-                print("Telas disponíveis:", self.manager.screen_names)
                 
                 # Navega para a tela 'home'.
                 # A propriedade `manager` é o ScreenManager que gerencia a tela.

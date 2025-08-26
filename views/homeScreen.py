@@ -62,6 +62,15 @@ class HomeScreen(MDScreen):
             self.ids.user_name_label.text = user_data.get('nomePess', 'Usuário')
             self.ids.user_avatar.source = user_data.get('foto_perfil', 'image/luiz.png')
 
+        """
+        Este método é chamado quando a tela se torna visível.
+        A partir daqui, os widgets com IDs já estão carregados.
+        """
+        print(f"O nav_drawer é do tipo: {type(self.nav_drawer)}")
+        if self.nav_drawer:
+            # Agora você pode usar o método com segurança
+            self.nav_drawer.set_state("open")
+
     def add_widget_to_content_manager(self, widget_instance):
         """
         Adiciona uma tela de conteúdo ao ScreenManager interno se ela ainda não existir.

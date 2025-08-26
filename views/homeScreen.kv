@@ -73,7 +73,7 @@
 
                         MDTopAppBarTitle:
                             text: "Sistema de Gestão"
-                            halign: "left"
+                            halign: "center"
 
                     ScreenManager:
                         id: content_manager
@@ -85,6 +85,7 @@
             width: dp(250)
             md_bg_color: app.theme_cls.surfaceColor
 
+           
             MDBoxLayout:
                 orientation: 'vertical'
                 padding: dp(10)
@@ -103,7 +104,7 @@
                     # Propriedade on_release antes dos widgets filhos
                     on_release:
                         root.switch_content_screen('inicio')
-                        root.ids.nav_drawer.set_state("close")
+                       
                     MDNavigationDrawerItemLeadingIcon:
                         icon: "home"
                     MDNavigationDrawerItemText:
@@ -131,8 +132,8 @@
                     MDNavigationDrawerItem:
                         # Propriedade on_release antes dos widgets filhos
                         on_release:
-                            root.switch_content_screen('cadastro_funcionario')
-                            root.ids.nav_drawer.set_state("close")
+                            root.switch_content_screen('funcionario')
+                               
                         MDNavigationDrawerItemLeadingIcon:
                             icon: "account-tie"
                         MDNavigationDrawerItemText:
@@ -140,30 +141,13 @@
                     MDNavigationDrawerItem:
                         # Propriedade on_release antes dos widgets filhos
                         on_release:
-                            root.switch_content_screen('cadastro_associado')
-                            root.ids.nav_drawer.set_state("close")
+                            root.switch_content_screen('associado')
+                            
                         MDNavigationDrawerItemLeadingIcon:
                             icon: "account-group"
                         MDNavigationDrawerItemText:
                             text: "Associados"
-                    MDNavigationDrawerItem:
-                        # Propriedade on_release antes dos widgets filhos
-                        on_release:
-                            # root.switch_content_screen('departamento')
-                            root.ids.nav_drawer.set_state("close")
-                        MDNavigationDrawerItemLeadingIcon:
-                            icon: "office-building"
-                        MDNavigationDrawerItemText:
-                            text: "Departamentos"
-                    MDNavigationDrawerItem:
-                        # Propriedade on_release antes dos widgets filhos
-                        on_release:
-                            # root.switch_content_screen('cargo')
-                            root.ids.nav_drawer.set_state("close")
-                        MDNavigationDrawerItemLeadingIcon:
-                            icon: "briefcase"
-                        MDNavigationDrawerItemText:
-                            text: "Cargos"
+                        
 
                 MDNavigationDrawerDivider:
 
@@ -171,7 +155,7 @@
                     # Propriedade on_release antes dos widgets filhos
                     on_release:
                         print("Relatórios Clicado")
-                        root.ids.nav_drawer.set_state("close")
+                            
                     MDNavigationDrawerItemLeadingIcon:
                         icon: "chart-bar"
                     MDNavigationDrawerItemText:
@@ -183,7 +167,7 @@
                     # Propriedade on_release antes dos widgets filhos
                     on_release:
                         print("Configurações Clicado")
-                        root.ids.nav_drawer.set_state("close")
+                        
                     MDNavigationDrawerItemLeadingIcon:
                         icon: "cog"
                     MDNavigationDrawerItemText:
